@@ -64,7 +64,7 @@ function loopInDeep(arr, w) {
 let rootTree = [];
 for (let i = 0; i < inputAnswers.length; i++) {
  if(inputAnswers[i].length < 2){
-    throw "WronTreeStructureError.";
+    throw "WrongTreeStructureError.";
  } else {
     rootTree.push(loopInDeep(inputAnswers[i], []));
  }
