@@ -2,18 +2,20 @@
 
 Gived an array.
 
-    const arrT = [
+const inputAnswers = [
+    [
         [
-            [["P"], ["S"]],
-            [["R"], ["S"]]
+            [["ARMANDO", "P"], ["DAVE", "S"]],
+            [["RICHAR", "R"], ["MICHAEL", "S"]]
         ],
         [
-            [["S"],["P"]],
-            [["R"],["S"]]
-        ],  
-      ];
+            [["ALLEN", "S"], ["OMER", "P"]],
+            [["DAVID", "R"], ["Richard x", "P"]]
+        ],
+    ]
+];
 
-Will return the winner = `["R"]`
+Will return the winner = `["RICHAR", "R"]`
 
 ## usage
 1. Copy the code of the file `binary-rps-tournament.js` in [ES6 Console](https://es6console.com/) and run it.
