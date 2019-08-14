@@ -1,25 +1,28 @@
-  const arrT = [
+let choices = ["R", "P", "S"];
+
+const inputAnswers = [
+    [
         [
-            [["P"], ["S"]],
-            [["R"], ["S"]]
+            [["ARMANDO", "P"], ["DAVE", "S"]],
+            [["RICHAR", "R"], ["MICHAEL", "S"]]
         ],
         [
-            [["S"],["P"]],
-            [["R"],["S"]]
+            [["ALLEN", "S"], ["OMER", "P"]],
+            [["DAVID", "R"], ["Richard x", "P"]]
         ],
-    
-  ];
+    ]
+];
 
-let choices = ["R","P","S"] 
-
+//return module
 function mod(a, b) {
     c = a % b
     return (c < 0) ? c + b : c;
 }
 
-function checkWinner(choice1, choice2) { 
-    x = choices.indexOf(choice1);
-    y = choices.indexOf(choice2);
+function checkWinner(choice1, choice2) {
+    rps_game_winner([choice1, choice2]);
+    x = choices.indexOf(choice1[1]);
+    y = choices.indexOf(choice2[1]);
     if (x == y) {
         return choice1;
     }
@@ -30,17 +33,38 @@ function checkWinner(choice1, choice2) {
     }
 }
 
+//Implementation
+rps_game_winner = (playerAnswers) => {
+    try {
+        if (playerAnswers.length < 2) {
+            throw "WrongNumberOfPlayersError.";
+            return;
+        }
+        playerAnswers.forEach((item, idex) => {
+            if (!/R|P|S/g.test(item[1].toUpperCase())) {
+                throw "NoSuchStrategyError.";
+                return;
+            }
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
 
+//recursive function to walk through to tree
 function loopInDeep(arr, w) {
-  if(arr.length < 2 || arr[0].length < 2){
-    return w = checkWinner(arr[0].toString(), arr[1].toString());
-  } else {
-    return checkWinner(loopInDeep(arr[0],w), loopInDeep(arr[1],w)); 
-  }
+    if (arr[0].length < 2 || !Array.isArray(arr[0][0])) {
+        return w = checkWinner(arr[0], arr[1]);
+    } else {
+        return checkWinner(loopInDeep(arr[0], w), loopInDeep(arr[1], w));
+    }
 }
 
+//root array
 let rootTree = [];
-for(let i=0;i<arrT.length;i++){
-  rootTree.push(loopInDeep(arrT[i],""));
+for (let i = 0; i < inputAnswers.length; i++) {
+    rootTree.push(loopInDeep(inputAnswers[i], []));
 }
-console.log(checkWinner(rootTree[0], rootTree[1]));
+
+//result
+console.log(rootTree[0]);
