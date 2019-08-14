@@ -2,8 +2,8 @@
 
 Gived an array.
 
-const inputAnswers = [
-    [
+    const inputAnswers = [
+      [
         [
             [["ARMANDO", "P"], ["DAVE", "S"]],
             [["RICHAR", "R"], ["MICHAEL", "S"]]
@@ -12,8 +12,8 @@ const inputAnswers = [
             [["ALLEN", "S"], ["OMER", "P"]],
             [["DAVID", "R"], ["Richard x", "P"]]
         ],
-    ]
-];
+      ]
+    ];
 
 Will return the winner = `["RICHAR", "R"]`
 
