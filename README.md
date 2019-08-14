@@ -1,4 +1,4 @@
-# RPS tournament in Javascript
+# RPS tournament in JavaScript
 
 Gived an array.
 
